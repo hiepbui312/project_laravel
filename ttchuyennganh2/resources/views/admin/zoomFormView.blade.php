@@ -70,7 +70,7 @@
 					@endisset --}}
 				</div>
 				<input type="submit" value="Process" class="btn btn-primary">
-				<a class="btn btn-light" href="http://localhost/ttchuyennganh/public/admin/product/tour">Cancel</a>
+				<a class="btn btn-light" href="{{ route("admin.zoom.index") }}">Cancel</a>
 			</form>
 			{{-- <form method="post" action="{{url('dropzone-image-upload')}}" enctype="multipart/form-data" 
 						  class="dropzone" id="dropzone">

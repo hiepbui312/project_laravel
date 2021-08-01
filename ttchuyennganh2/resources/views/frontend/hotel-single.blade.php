@@ -49,7 +49,7 @@
                         <div class="header-left">
                             <ul class="list-items">
                                 <li><a href="#"><i class="la la-phone mr-1"></i>(123) 123-456</a></li>
-                                <li><a href="#"><i class="la la-envelope mr-1"></i>trizen@example.com</a></li>
+                                <li><a href="#"><i class="la la-envelope mr-1"></i>nhom16@example.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -57,67 +57,18 @@
                 <div class="col-lg-6">
                     <div class="header-top-content">
                         <div class="header-right d-flex align-items-center justify-content-end">
+                          
+                            @if (session('userName')!= null)
+                            @php
+                                echo "welcome ". session('userName');
+                            @endphp
+                            <a href="{{URL::route('logout')}}" style="margin-left: 10px;">Log out</a>
+                            @else
                             <div class="header-right-action">
-                                <div class="select-contain select--contain w-auto">
-                                    <select class="select-contain-select">
-                                        <option data-content='<span class="flag-icon flag-icon-id mr-1"></span> Bahasa Indonesia'>Bahasa Indonesia</option>
-                                        <option data-content='<span class="flag-icon flag-icon-de mr-1"></span> Deutsch'>Deutsch</option>
-                                        <option data-content='<span class="flag-icon flag-icon-us mr-1"></span> English(US)' selected>English US</option>
-                                        <option data-content='<span class="flag-icon flag-icon-gb-eng mr-1"></span> English(UK)'>English UK</option>
-                                        <option data-content='<span class="flag-icon flag-icon-ro mr-1"></span> Romanian'>Romanian</option>
-                                        <option data-content='<span class="flag-icon flag-icon-es mr-1"></span> Español'>Español</option>
-                                        <option data-content='<span class="flag-icon flag-icon-fr mr-1"></span> Francais'>Francais</option>
-                                        <option data-content='<span class="flag-icon flag-icon-it mr-1"></span> Italiano'>Italiano</option>
-                                        <option data-content='<span class="flag-icon flag-icon-pl mr-1"></span> Polski'>Polski</option>
-                                        <option data-content='<span class="flag-icon flag-icon-pt mr-1"></span> Portuguese'>Portuguese</option>
-                                        <option data-content='<span class="flag-icon flag-icon-tr mr-1"></span> Turkish'>Turkish</option>
-                                        <option data-content='<span class="flag-icon flag-icon-ru mr-1"></span> Russian'>Russian</option>
-                                        <option data-content='<span class="flag-icon flag-icon-jp mr-1"></span> Japanese'>Japanese</option>
-                                        <option data-content='<span class="flag-icon flag-icon-cn mr-1"></span> Mandarin'>Mandarin</option>
-                                        <option data-content='<span class="flag-icon flag-icon-tw mr-1"></span> Mandarin Chinese'>Mandarin Chinese</option>
-                                        <option data-content='<span class="flag-icon flag-icon-kr mr-1"></span> Korean'>Korean</option>
-                                        <option data-content='<span class="flag-icon flag-icon-in mr-1"></span> Hindi'>Hindi</option>
-                                    </select>
-                                </div>
+                                <a href="{{ route("login.register") }}" class="theme-btn theme-btn-small theme-btn-transparent mr-1">Sign Up</a>
+                                <a href="{{ route("login") }}" class="theme-btn theme-btn-small">Login</a>
                             </div>
-                            <div class="header-right-action">
-                                <div class="select-contain select--contain w-auto">
-                                    <select class="select-contain-select">
-                                        <option value="1">AED</option>
-                                        <option value="2">AUD</option>
-                                        <option value="3">BRL</option>
-                                        <option value="4">CAD</option>
-                                        <option value="5">CHF</option>
-                                        <option value="6">CNY</option>
-                                        <option value="7">EUR</option>
-                                        <option value="8">GBP</option>
-                                        <option value="9">HKD</option>
-                                        <option value="10">IDR</option>
-                                        <option value="11">INR</option>
-                                        <option value="12">JPY</option>
-                                        <option value="13">KRW</option>
-                                        <option value="14">MYR</option>
-                                        <option value="15">NZD</option>
-                                        <option value="16">PHP</option>
-                                        <option value="17">PLN</option>
-                                        <option value="18">RUB</option>
-                                        <option value="19">SAR</option>
-                                        <option value="20">SGD</option>
-                                        <option value="21">THB</option>
-                                        <option value="22">TRY</option>
-                                        <option value="23">TWD</option>
-                                        <option value="24" selected>USD</option>
-                                        <option value="25">VND</option>
-                                        <option value="26">MXN</option>
-                                        <option value="27">ARS</option>
-                                        <option value="28">INR</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="header-right-action">
-                                <a href="#" class="theme-btn theme-btn-small theme-btn-transparent mr-1" data-toggle="modal" data-target="#signupPopupForm">Sign Up</a>
-                                 <a href="#" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Login</a>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -128,10 +79,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="menu-wrapper">
+                    <div class="menu-wrapper"> 
                         <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
                         <div class="logo">
-                            <a href="http://localhost/ttchuyennganh2/public"><img src="{{ asset('assets/frontend/images/logo.png') }}" alt="logo"></a>
+                            <a href="{{ route("home.index") }}"><img height="50px" src="{{ asset('assets/upload/img/logo2.png') }}" alt="logo"></a>
                             <div class="menu-toggler">
                                 <i class="la la-bars"></i>
                                 <i class="la la-times"></i>
@@ -141,14 +92,15 @@
                             <nav>
                                 <ul>
                                     <li>
-                                        <a href="http://localhost/ttchuyennganh2/public">Home</a>
+                                        <a href="{{ route("home.index") }}">Home</a>
                                     </li>
                                     <li>
-                                        <a href="http://localhost/ttchuyennganh2/public/hotel">Hotel</a>
+                                        <a href="{{ route("hotel.index") }}">Hotel</a>
                                     </li>
                                 </ul>
                             </nav>
                         </div><!-- end main-menu-content -->
+                        
                     </div><!-- end menu-wrapper -->
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
@@ -168,7 +120,7 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-list breadcrumb-top-list">
                     <ul class="list-items bg-transparent radius-none p-0">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{ route("home.index") }}">Home</a></li>
                         <li><?php echo $data->country; ?></li>
                         <li><?php echo $data->name; ?></li>
                     </ul>
@@ -343,9 +295,11 @@
                                 @endphp
                                  
                                 <?php foreach($room as $rows): ?>
+                                
                                 @php
                                     $i++;
                                 @endphp
+                                <input type="hidden" value="<?php echo $rows->id ?>" id="b<?php echo $i?>">
                                 <div class="cabin-type padding-top-30px">
                                     <div class="cabin-type-item seat-selection-item d-flex">
                                         <div class="cabin-type-img flex-shrink-0">
@@ -398,7 +352,6 @@
                                             
                                         </div>
                                         <div class="cabin-price">
-                                            <p class="text-uppercase font-size-14"> Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block">$<?php echo $rows->price; ?></strong></>
                                             <div style="font-size: 20px;margin-top: 20px;color:#2273e5;"><label for="selectChb<?php echo $i ?>">SELECT</label>
                                                 <input type="checkbox" id="selectChb<?php echo $i ?>"  onclick="a<?php echo $i ?>()">
                                             </div>
@@ -409,21 +362,25 @@
                                 <?php endforeach; ?>
                                 <script>
                                     function a4(){
+                                            document.getElementById("room123").value = document.getElementById("b4").value;
                                             document.getElementById("selectChb2").checked= false;
                                             document.getElementById("selectChb3").checked= false;
                                             document.getElementById("selectChb1").checked= false;
                                     }
                                     function a3(){
+                                            document.getElementById("room123").value = document.getElementById("b3").value;
                                             document.getElementById("selectChb2").checked= false;
                                             document.getElementById("selectChb4").checked= false;
                                             document.getElementById("selectChb1").checked= false;
                                     }
                                     function a2(){
+                                            document.getElementById("room123").value = document.getElementById("b2").value;
                                             document.getElementById("selectChb4").checked= false;
                                             document.getElementById("selectChb3").checked= false;
                                             document.getElementById("selectChb1").checked= false;
                                     }
                                     function a1(){
+                                            document.getElementById("room123").value = document.getElementById("b1").value;
                                             document.getElementById("selectChb2").checked= false;
                                             document.getElementById("selectChb3").checked= false;
                                             document.getElementById("selectChb4").checked= false;
@@ -731,9 +688,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-lg-4">
                                             <div class="review-summary">
-                                                <h2>4.5<span>/5</span></h2>
-                                                <p>Excellent</p>
-                                                <span>Based on 4 reviews</span>
+                                                <h2><?php echo isset($avgRate) ? number_format($avgRate,1) : '5'; ?><span>/5</span></h2>
                                             </div>
                                         </div><!-- end col-lg-4 -->
                                         <div class="col-lg-8">
@@ -741,66 +696,16 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="progress-item">
-                                                            <h3 class="progressbar-title">Service</h3>
+                                                            <h3 class="progressbar-title">Total star</h3>
                                                             <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
                                                                 <div class="progressbar-box flex-shrink-0">
-                                                                    <div class="progressbar-line" data-percent="70%">
+                                                                    <?php  $a = isset($avgRate) ? number_format($avgRate,1) : '5';
+                                                                            $avg = ($a/5)*100; ?>
+                                                                    <div class="progressbar-line" data-percent="<?php echo $avg; ?>%">
                                                                         <div class="progressbar-line-item bar-bg-1"></div>
                                                                     </div> <!-- End Skill Bar -->
                                                                 </div>
-                                                                <div class="bar-percent">4.6</div>
-                                                            </div>
-                                                        </div><!-- end progress-item -->
-                                                    </div><!-- end col-lg-6 -->
-                                                    <div class="col-lg-6">
-                                                        <div class="progress-item">
-                                                            <h3 class="progressbar-title">Location</h3>
-                                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
-                                                                <div class="progressbar-box flex-shrink-0">
-                                                                    <div class="progressbar-line" data-percent="55%">
-                                                                        <div class="progressbar-line-item bar-bg-2"></div>
-                                                                    </div> <!-- End Skill Bar -->
-                                                                </div>
-                                                                <div class="bar-percent">4.7</div>
-                                                            </div>
-                                                        </div><!-- end progress-item -->
-                                                    </div><!-- end col-lg-6 -->
-                                                    <div class="col-lg-6">
-                                                        <div class="progress-item">
-                                                            <h3 class="progressbar-title">Value for Money</h3>
-                                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
-                                                                <div class="progressbar-box flex-shrink-0">
-                                                                    <div class="progressbar-line" data-percent="40%">
-                                                                        <div class="progressbar-line-item bar-bg-3"></div>
-                                                                    </div> <!-- End Skill Bar -->
-                                                                </div>
-                                                                <div class="bar-percent">2.6</div>
-                                                            </div>
-                                                        </div><!-- end progress-item -->
-                                                    </div><!-- end col-lg-6 -->
-                                                    <div class="col-lg-6">
-                                                        <div class="progress-item">
-                                                            <h3 class="progressbar-title">Cleanliness</h3>
-                                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
-                                                                <div class="progressbar-box flex-shrink-0">
-                                                                    <div class="progressbar-line" data-percent="60%">
-                                                                        <div class="progressbar-line-item bar-bg-4"></div>
-                                                                    </div> <!-- End Skill Bar -->
-                                                                </div>
-                                                                <div class="bar-percent">3.6</div>
-                                                            </div>
-                                                        </div><!-- end progress-item -->
-                                                    </div><!-- end col-lg-6 -->
-                                                    <div class="col-lg-6">
-                                                        <div class="progress-item">
-                                                            <h3 class="progressbar-title">Facilities</h3>
-                                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
-                                                                <div class="progressbar-box flex-shrink-0">
-                                                                    <div class="progressbar-line" data-percent="50%">
-                                                                        <div class="progressbar-line-item bar-bg-5"></div>
-                                                                    </div> <!-- End Skill Bar -->
-                                                                </div>
-                                                                <div class="bar-percent">2.6</div>
+                                                                <div class="bar-percent"><?php echo isset($avgRate) ? number_format($avgRate,1) : '5'; ?></div>
                                                             </div>
                                                         </div><!-- end progress-item -->
                                                     </div><!-- end col-lg-6 -->
@@ -814,111 +719,26 @@
                         </div><!-- end reviews -->
                         <div class="review-box">
                             <div class="single-content-item padding-top-40px">
-                                <h3 class="title font-size-20">Showing 3 guest reviews</h3>
+                                <h3 class="title font-size-20">Showing <?php echo count($rate) ?> guest reviews</h3>
+                                <?php foreach ($rate as $rows): ?>
                                 <div class="comments-list padding-top-50px">
-                                    <div class="comment">
-                                        <div class="comment-avatar">
-                                            <img class="avatar__img" alt="" src="images/team8.jpg">
-                                        </div>
-                                        <div class="comment-body">
+                                    <div class="comment-body">
                                             <div class="meta-data">
-                                                <h3 class="comment__author">Jenny Doe</h3>
+                                                <h3 class="comment__author"><?php echo $rows->name; ?></h3>
                                                 <div class="meta-data-inner d-flex">
                                                     <span class="ratings d-flex align-items-center mr-1">
+                                                        <?php for($i=1;$i<=$rows->total_star;$i++): ?>
                                                         <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
+                                                        <?php endfor; ?>
                                                     </span>
-                                                    <p class="comment__date">April 5, 2019</p>
                                                 </div>
                                             </div>
                                             <p class="comment-content">
-                                                Lorem ipsum dolor sit amet, dolores mandamus moderatius ea ius, sed civibus vivendum imperdiet ei, amet tritani sea id. Ut veri diceret fierent mei, qui facilisi suavitate euripidis
-                                            </p>
-                                            <div class="comment-reply d-flex align-items-center justify-content-between">
-                                                <a class="theme-btn" href="#" data-toggle="modal" data-target="#replayPopupForm">
-                                                    <span class="la la-mail-reply mr-1"></span>Reply
-                                                </a>
-                                                <div class="reviews-reaction">
-                                                    <a href="#" class="comment-like"><i class="la la-thumbs-up"></i> 13</a>
-                                                    <a href="#" class="comment-dislike"><i class="la la-thumbs-down"></i> 2</a>
-                                                    <a href="#" class="comment-love"><i class="la la-heart-o"></i> 5</a>
-                                                </div>
-                                            </div>
+                                                <?php echo $rows->message; ?>
+                                            </p>    
                                         </div>
-                                    </div><!-- end comments -->
-                                    <div class="comment comment-reply-item">
-                                        <div class="comment-avatar">
-                                            <img class="avatar__img" alt="" src="images/team9.jpg">
-                                        </div>
-                                        <div class="comment-body">
-                                            <div class="meta-data">
-                                                <h3 class="comment__author">Jenny Doe</h3>
-                                                <div class="meta-data-inner d-flex">
-                                                    <span class="ratings d-flex align-items-center mr-1">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                    </span>
-                                                    <p class="comment__date">April 5, 2019</p>
-                                                </div>
-                                            </div>
-                                            <p class="comment-content">
-                                                Lorem ipsum dolor sit amet, dolores mandamus moderatius ea ius, sed civibus vivendum imperdiet ei, amet tritani sea id. Ut veri diceret fierent mei, qui facilisi suavitate euripidis
-                                            </p>
-                                            <div class="comment-reply d-flex align-items-center justify-content-between">
-                                                <a class="theme-btn" href="#" data-toggle="modal" data-target="#replayPopupForm">
-                                                    <span class="la la-mail-reply mr-1"></span>Reply
-                                                </a>
-                                                <div class="reviews-reaction">
-                                                    <a href="#" class="comment-like"><i class="la la-thumbs-up"></i> 13</a>
-                                                    <a href="#" class="comment-dislike"><i class="la la-thumbs-down"></i> 2</a>
-                                                    <a href="#" class="comment-love"><i class="la la-heart-o"></i> 5</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- end comments -->
-                                    <div class="comment">
-                                        <div class="comment-avatar">
-                                            <img class="avatar__img" alt="" src="images/team10.jpg">
-                                        </div>
-                                        <div class="comment-body">
-                                            <div class="meta-data">
-                                                <h3 class="comment__author">Jenny Doe</h3>
-                                                <div class="meta-data-inner d-flex">
-                                                    <span class="ratings d-flex align-items-center mr-1">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                    </span>
-                                                    <p class="comment__date">April 5, 2019</p>
-                                                </div>
-                                            </div>
-                                            <p class="comment-content">
-                                                Lorem ipsum dolor sit amet, dolores mandamus moderatius ea ius, sed civibus vivendum imperdiet ei, amet tritani sea id. Ut veri diceret fierent mei, qui facilisi suavitate euripidis
-                                            </p>
-                                            <div class="comment-reply d-flex align-items-center justify-content-between">
-                                                <a class="theme-btn" href="#" data-toggle="modal" data-target="#replayPopupForm">
-                                                    <span class="la la-mail-reply mr-1"></span>Reply
-                                                </a>
-                                                <div class="reviews-reaction">
-                                                    <a href="#" class="comment-like"><i class="la la-thumbs-up"></i> 13</a>
-                                                    <a href="#" class="comment-dislike"><i class="la la-thumbs-down"></i> 2</a>
-                                                    <a href="#" class="comment-love"><i class="la la-heart-o"></i> 5</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- end comments -->
-                                    <div class="btn-box load-more text-center">
-                                        <button class="theme-btn theme-btn-small theme-btn-transparent" type="button">Load More Review</button>
-                                    </div>
                                 </div><!-- end comments-list -->
+                               <?php endforeach ?>
                                 <div class="comment-forum padding-top-40px">
                                     <div class="form-box">
                                         <div class="form-title-wrap">
@@ -929,109 +749,51 @@
                                                 <div class="row">
                                                     <div class="col-lg-4 responsive-column">
                                                         <div class="rate-option-item">
-                                                            <label>Service</label>
+                                                            <label onclick="star1()">Total rating</label>
                                                             <div class="rate-stars-option">
-                                                                <input type="checkbox" id="lst1" value="1">
-                                                                <label for="lst1"></label>
-                                                                <input type="checkbox" id="lst2" value="2">
-                                                                <label for="lst2"></label>
-                                                                <input type="checkbox" id="lst3" value="3">
-                                                                <label for="lst3"></label>
-                                                                <input type="checkbox" id="lst4" value="4">
-                                                                <label for="lst4"></label>
-                                                                <input type="checkbox" id="lst5" value="5">
-                                                                <label for="lst5"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- col-lg-4 -->
-                                                    <div class="col-lg-4 responsive-column">
-                                                        <div class="rate-option-item">
-                                                            <label>Location</label>
-                                                            <div class="rate-stars-option">
-                                                                <input type="checkbox" id="l1" value="1">
-                                                                <label for="l1"></label>
-                                                                <input type="checkbox" id="l2" value="2">
-                                                                <label for="l2"></label>
-                                                                <input type="checkbox" id="l3" value="3">
-                                                                <label for="l3"></label>
-                                                                <input type="checkbox" id="l4" value="4">
-                                                                <label for="l4"></label>
-                                                                <input type="checkbox" id="l5" value="5">
-                                                                <label for="l5"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- col-lg-4 -->
-                                                    <div class="col-lg-4 responsive-column">
-                                                        <div class="rate-option-item">
-                                                            <label>Value for Money</label>
-                                                            <div class="rate-stars-option">
-                                                                <input type="checkbox" id="vm1" value="1">
-                                                                <label for="vm1"></label>
-                                                                <input type="checkbox" id="vm2" value="2">
-                                                                <label for="vm2"></label>
-                                                                <input type="checkbox" id="vm3" value="3">
-                                                                <label for="vm3"></label>
-                                                                <input type="checkbox" id="vm4" value="4">
-                                                                <label for="vm4"></label>
-                                                                <input type="checkbox" id="vm5" value="5">
-                                                                <label for="vm5"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- col-lg-4 -->
-                                                    <div class="col-lg-4 responsive-column">
-                                                        <div class="rate-option-item">
-                                                            <label>Cleanliness</label>
-                                                            <div class="rate-stars-option">
-                                                                <input type="checkbox" id="cln1" value="1">
-                                                                <label for="cln1"></label>
-                                                                <input type="checkbox" id="cln2" value="2">
-                                                                <label for="cln2"></label>
-                                                                <input type="checkbox" id="cln3" value="3">
-                                                                <label for="cln3"></label>
-                                                                <input type="checkbox" id="cln4" value="4">
-                                                                <label for="cln4"></label>
-                                                                <input type="checkbox" id="cln5" value="5">
-                                                                <label for="cln5"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- col-lg-4 -->
-                                                    <div class="col-lg-4 responsive-column">
-                                                        <div class="rate-option-item">
-                                                            <label>Facilities</label>
-                                                            <div class="rate-stars-option">
-                                                                <input type="checkbox" id="f1" value="1">
-                                                                <label for="f1"></label>
-                                                                <input type="checkbox" id="f2" value="2">
-                                                                <label for="f2"></label>
-                                                                <input type="checkbox" id="f3" value="3">
-                                                                <label for="f3"></label>
-                                                                <input type="checkbox" id="f4" value="4">
-                                                                <label for="f4"></label>
-                                                                <input type="checkbox" id="f5" value="5">
-                                                                <label for="f5"></label>
+                                                                <input type="checkbox" id="lst1">
+                                                                <label for="lst1"  onclick="star5()"></label>
+                                                                <input type="checkbox" id="lst2">
+                                                                <label for="lst2" onclick="star4()"></label>
+                                                                <input type="checkbox" id="lst3">
+                                                                <label for="lst3" onclick="star3()"></label>
+                                                                <input type="checkbox" id="lst4">
+                                                                <label for="lst4" onclick="star2()"></label>
+                                                                <input type="checkbox" id="lst5">
+                                                                <label for="lst5" onclick="star1()"></label>
                                                             </div>
                                                         </div>
                                                     </div><!-- col-lg-4 -->
                                                 </div><!-- end row -->
                                             </div><!-- end rate-option -->
                                             <div class="contact-form-action">
-                                                <form method="post">
+                                                <form method="post" action="">
+                                                    {{ csrf_field()}}
+                                                    <input type="hidden" name="star" id="star">
+                                                    <script>
+                                                        function star1(){
+                                                            document.getElementById('star').value = 1;
+                                                        }
+                                                        function star2(){
+                                                            document.getElementById('star').value = 2;
+                                                        }
+                                                        function star3(){
+                                                            document.getElementById('star').value = 3;
+                                                        }
+                                                        function star4(){
+                                                            document.getElementById('star').value = 4;
+                                                        }
+                                                        function star5(){
+                                                            document.getElementById('star').value = 5;
+                                                        }
+                                                    </script>
                                                     <div class="row">
                                                         <div class="col-lg-6 responsive-column">
                                                             <div class="input-box">
-                                                                <label class="label-text">Name</label>
+                                                                <label class="label-text">Your nick name</label>
                                                                 <div class="form-group">
                                                                     <span class="la la-user form-icon"></span>
-                                                                    <input class="form-control" type="text" name="text" placeholder="Your name">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 responsive-column">
-                                                            <div class="input-box">
-                                                                <label class="label-text">Email</label>
-                                                                <div class="form-group">
-                                                                    <span class="la la-envelope-o form-icon"></span>
-                                                                    <input class="form-control" type="email" name="email" placeholder="Email address">
+                                                                    <input class="form-control" type="text" name="name" placeholder="Your name" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1040,13 +802,18 @@
                                                                 <label class="label-text">Message</label>
                                                                 <div class="form-group">
                                                                     <span class="la la-pencil form-icon"></span>
-                                                                    <textarea class="message-control form-control" name="message" placeholder="Write message"></textarea>
+                                                                    <textarea class="message-control form-control" name="message" placeholder="Write message" required></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-12">
                                                             <div class="btn-box">
-                                                                <button type="button" class="theme-btn">Leave a Review</button>
+                                                                @if (session('userName')!= null)
+                                                                     <input type="submit" value="Leave a Review"  class="theme-btn">
+                                                                @else
+                                                                    <a href="{{ route("login") }}" class="theme-btn theme-btn-small">Login to review</a>
+                                                                @endif
+                                                               
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1070,19 +837,21 @@
                             </div><!-- end sidebar-widget-item -->
                             <div class="sidebar-widget-item">
                                 <div class="contact-form-action">
-                                    <form action="" method="POST">
+                                    {{-- <form action="../paymentDetail/<?php echo $data->id ?>" method="POST">
+                                        {{ csrf_field()}} --}}
+                                        <input type="hidden" id="room123" name="room_id">
                                         <div class="input-box">
                                             <label class="label-text">Check in - Check out</label>
                                             <div class="form-group">
                                                 <span class="la la-calendar form-icon"></span>
-                                                <input class="date-range form-control" type="text" name="daterange" readonly name="date">
+                                                <input class="date-range form-control" type="text" name="daterange" id="daterange" readonly>
                                             </div>
                                         </div>
                                         <div class="input-box">
                                             <label class="label-text">Rooms</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select" name="rooms">
+                                                    <select class="select-contain-select" name="rooms" id="rooms">
                                                         <option value="0">Select Rooms</option>
                                                         <option value="1">1 Room</option>
                                                         <option value="2">2 Rooms</option>
@@ -1102,90 +871,53 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                        <div class="sidebar-widget-item">
+                                            <div class="qty-box mb-2 d-flex align-items-center justify-content-between">
+                                                <label class="font-size-16">People <span>Age 18+</span></label>
+                                                <div class="qtyBtn d-flex align-items-center">
+                                                    <div class="qtyDec"><i class="la la-minus"></i></div>
+                                                    <input type="text" name="qtyInput1" id="adult" value="0">
+                                                    <div class="qtyInc"><i class="la la-plus"></i></div>
+                                                </div>
+                                            </div><!-- end qty-box -->
+                                            <div class="qty-box mb-2 d-flex align-items-center justify-content-between">
+                                                <label class="font-size-16">Children <span>2-12 years old</span></label>
+                                                <div class="qtyBtn d-flex align-items-center">
+                                                    <div class="qtyDec"><i class="la la-minus"></i></div>
+                                                    <input type="text" name="qtyInput2" id="children" value="0">
+                                                    <div class="qtyInc"><i class="la la-plus"></i></div>
+                                                </div>
+                                            </div><!-- end qty-box -->                            
+                                        </div><!-- end sidebar-widget-item -->
+                                        <input type="button" class="btn btn-primary" value="Book Now" style="font-size: 18px; padding:10px 100px ;margin-top: 15px ;margin-left:10px;" onclick="asd123()">
+                                        <script>
+                                            function asd123(){
+                                                var daterange = document.getElementById("daterange").value;
+                                                var rooms = document.getElementById("rooms").value;
+                                                var people = parseInt(document.getElementById("adult").value) + parseInt(document.getElementById("children").value);
+                                                var room_id = document.getElementById("room123").value;
+                                                daterange1 = daterange.replaceAll('/','-'    );
+                                                if(document.getElementById("rooms").value ==0)
+                                                { alert("Vui lòng nhập số phòng")}
+                                                else if(document.getElementById("adult").value == 0 && document.getElementById("children").value ==0)
+                                                { alert("Vui lòng nhập số lượng người")}
+                                                else if(isNaN(parseInt(document.getElementById("room123").value)) == true)
+                                                { alert("Vui lòng chọn loại phòng")}
+                                                else{location.replace("../paymentDetail/<?php echo $data->id ?>/"+daterange1+"/"+rooms+"/"+people+"/"+room_id);}
+                                            }
+                                        </script>
+                                    {{-- </form> --}}
                                 </div>
                             </div><!-- end sidebar-widget-item -->
-                            <div class="sidebar-widget-item">
-                                <div class="qty-box mb-2 d-flex align-items-center justify-content-between">
-                                    <label class="font-size-16">Adults <span>Age 18+</span></label>
-                                    <div class="qtyBtn d-flex align-items-center">
-                                        <div class="qtyDec"><i class="la la-minus"></i></div>
-                                        <input type="text" name="qtyInput" value="0">
-                                        <div class="qtyInc"><i class="la la-plus"></i></div>
-                                    </div>
-                                </div><!-- end qty-box -->
-                                <div class="qty-box mb-2 d-flex align-items-center justify-content-between">
-                                    <label class="font-size-16">Children <span>2-12 years old</span></label>
-                                    <div class="qtyBtn d-flex align-items-center">
-                                        <div class="qtyDec"><i class="la la-minus"></i></div>
-                                        <input type="text" name="qtyInput" value="0">
-                                        <div class="qtyInc"><i class="la la-plus"></i></div>
-                                    </div>
-                                </div><!-- end qty-box -->
-                                <div class="qty-box mb-2 d-flex align-items-center justify-content-between">
-                                    <label class="font-size-16">Infants <span>0-2 years old</span></label>
-                                    <div class="qtyBtn d-flex align-items-center">
-                                        <div class="qtyDec"><i class="la la-minus"></i></div>
-                                        <input type="text" name="qtyInput" value="0">
-                                        <div class="qtyInc"><i class="la la-plus"></i></div>
-                                    </div>
-                                </div><!-- end qty-box -->
-                            </div><!-- end sidebar-widget-item -->
-                            <div class="btn-box pt-2">
-                                <a href="tour-booking.html" class="theme-btn text-center w-100 mb-2"><i class="la la-shopping-cart mr-2 font-size-18"></i>Book Now</a>
-                                <a href="#" class="theme-btn text-center w-100 theme-btn-transparent"><i class="la la-heart-o mr-2"></i>Add to Wishlist</a>
+                            
+                            <div class="btn-box pt-2">                                                        
                                 <div class="d-flex align-items-center justify-content-between pt-2">
                                     <a href="#" class="btn theme-btn-hover-gray font-size-15" data-toggle="modal" data-target="#sharePopupForm"><i class="la la-share mr-1"></i>Share</a>
                                     <p><i class="la la-eye mr-1 font-size-15 color-text-2"></i>3456</p>
                                 </div>
                             </div>
                         </div><!-- end sidebar-widget -->
-                        <div class="sidebar-widget single-content-widget">
-                            <h3 class="title stroke-shape">Enquiry Form</h3>
-                            <div class="enquiry-forum">
-                                <div class="form-box">
-                                    <div class="form-content">
-                                        <div class="contact-form-action">
-                                            <form method="post">
-                                                <div class="input-box">
-                                                    <label class="label-text">Your Name</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-user form-icon"></span>
-                                                        <input class="form-control" type="text" name="text" placeholder="Your name">
-                                                    </div>
-                                                </div>
-                                                <div class="input-box">
-                                                    <label class="label-text">Your Email</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-envelope-o form-icon"></span>
-                                                        <input class="form-control" type="email" name="email" placeholder="Email address">
-                                                    </div>
-                                                </div>
-                                                <div class="input-box">
-                                                    <label class="label-text">Message</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-pencil form-icon"></span>
-                                                        <textarea class="message-control form-control" name="message" placeholder="Write message"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="input-box">
-                                                    <div class="form-group">
-                                                        <div class="custom-checkbox mb-0">
-                                                            <input type="checkbox" id="agreeChb">
-                                                            <label for="agreeChb">I agree with <a href="#">Terms of Service</a> and
-                                                                <a href="#">Privacy Statement</a></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="btn-box">
-                                                    <button type="button" class="theme-btn">Submit Enquiry</button>
-                                                </div>
-                                            </form>
-                                        </div><!-- end contact-form-action -->
-                                    </div><!-- end form-content -->
-                                </div><!-- end form-box -->
-                            </div><!-- end enquiry-forum -->
-                        </div><!-- end sidebar-widget -->
+                        <!-- end sidebar-widget -->
                         <div class="sidebar-widget single-content-widget">
                             <h3 class="title stroke-shape">Why Book With Us?</h3>
                             <div class="sidebar-list">
@@ -1237,25 +969,20 @@
                 <div class="col-lg-4 responsive-column">
                     <div class="card-item">
                         <div class="card-img">
-                            <a href="hotel-single.html" class="d-block">
+                            <a href="{{ route("hotelDetail.index", ["id"=>$rows->id]) }}" class="d-block">
                                 <img src="{{ asset('assets/upload/img/'.$rows->img) }}" alt="hotel-img">
                             </a>
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title"><a href="hotel-single.html"><?php echo $rows->name ?></a></h3>
+                            <h3 class="card-title"><a href="{{ route("hotelDetail.index", ["id"=>$rows->id]) }}"><?php echo $rows->name ?></a></h3>
                             <p class="card-meta"><?php echo $rows->city ?>, <?php echo $rows->country ?></p>
-                            <div class="card-rating">
-                                <span class="badge text-white">4.4/5</span>
-                                <span class="review__text">Average</span>
-                                <span class="rating__text">(30 Reviews)</span>
-                            </div>
                             <div class="card-price d-flex align-items-center justify-content-between">
                                 <p>
                                     <span class="price__from">From</span>
                                     <span class="price__num">$<?php echo $rows->price-(($rows->price*$rows->discount)/100) ?></span>
                                     <span class="price__text">Per night</span>
                                 </p>
-                                <a href="http://localhost/ttchuyennganh2/public/hotelDetail/<?php echo $rows->id ?>" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                <a href="{{ route("hotelDetail.index", ["id"=>$rows->id]) }}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                             </div>
                         </div>
                     </div><!-- end card-item -->
@@ -1312,7 +1039,7 @@
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
                     <div class="footer-logo padding-bottom-30px">
-                        <a href="index.html" class="foot__logo"><img src="{{ asset('assets/frontend/images/logo.png') }}" alt="logo"></a>
+                        <a href="{{ route("home.index") }}"><img height="50px" src="{{ asset('assets/upload/img/logo2.png') }}" ></a>
                     </div><!-- end logo -->
                     <p class="footer__desc">Morbi convallis bibendum urna ut viverra. Maecenas consequat</p>
                     <ul class="list-items pt-3">
@@ -1398,7 +1125,7 @@
             <div class="col-lg-5">
                 <div class="copy-right-content d-flex align-items-center justify-content-end padding-top-30px">
                     <h3 class="title font-size-15 pr-2">We Accept</h3>
-                    <img src="images/payment-img.png" alt="">
+                    <img src="{{ asset('assets/frontend/images/payment-img.png ')}}" alt="">
                 </div><!-- end copy-right-content -->
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
@@ -1480,64 +1207,7 @@
 </div><!-- end modal-popup -->
 
 <!-- end modal-shared -->
-<div class="modal-popup">
-    <div class="modal fade" id="loginPopupForm" tabindex="-1" role="dialog"  aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div>
-                        <h5 class="modal-title title" id="exampleModalLongTitle2">Login</h5>
-                        <p class="font-size-14">Hello! Welcome to your account</p>
-                    </div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="la la-close"></span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="contact-form-action">
-                        <form method="post">
-                            <div class="input-box">
-                                <label class="label-text">Username</label>
-                                <div class="form-group">
-                                    <span class="la la-user form-icon"></span>
-                                    <input class="form-control" type="text" name="text" placeholder="Type your username">
-                                </div>
-                            </div><!-- end input-box -->
-                            <div class="input-box">
-                                <label class="label-text">Password</label>
-                                <div class="form-group mb-2">
-                                    <span class="la la-lock form-icon"></span>
-                                    <input class="form-control" type="text" name="text" placeholder="Type your password">
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="custom-checkbox mb-0">
-                                        <input type="checkbox" id="rememberchb">
-                                        <label for="rememberchb">Remember me</label>
-                                    </div>
-                                    <p class="forgot-password">
-                                        <a href="recover.html">Forgot Password?</a>
-                                    </p>
-                                </div>
-                            </div><!-- end input-box -->
-                            <div class="btn-box pt-3 pb-4">
-                                <button type="button" class="theme-btn w-100">Login Account</button>
-                            </div>
-                            <div class="action-box text-center">
-                                <p class="font-size-14">Or Login Using</p>
-                                <ul class="social-profile py-3">
-                                    <li><a href="#" class="bg-5 text-white"><i class="lab la-facebook-f"></i></a></li>
-                                    <li><a href="#" class="bg-6 text-white"><i class="lab la-twitter"></i></a></li>
-                                    <li><a href="#" class="bg-7 text-white"><i class="lab la-instagram"></i></a></li>
-                                    <li><a href="#" class="bg-5 text-white"><i class="lab la-linkedin-in"></i></a></li>
-                                </ul>
-                            </div>
-                        </form>
-                    </div><!-- end contact-form-action -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- end modal-popup -->
+
 
 <!-- end modal-shared -->
 <div class="modal-popup">

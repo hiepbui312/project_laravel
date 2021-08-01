@@ -8,18 +8,16 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <div style=" float: right;">
-                        <a href="{{ route("admin.users.create") }}" class="btn btn-primary"><h6>ADD USER&nbsp <i class="link-icon" data-feather="user-plus"></i></h6></a>
-                    </div>
                     <h6 class="card-title">Danh sách users</h6>
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>id</th>
                                     <th>NAME</th>
                                     <th>EMAIL</th>
-                                    <th>LEVEL</th>  
+                                    <th>STAR</th>
+                                    <th>Hotel name</th>
                                     <th style="width: 150px;"></th>  
                                 </tr>
                             </thead>
@@ -29,9 +27,9 @@
                                     <th><?php echo $row->id; ?></th>
                                     <td><?php echo $row->name; ?></td>
                                     <td><?php echo $row->email; ?></td>
-                                    <td><?php echo $row->level; ?></td>
-                                    <td style="text-align:center;">
-                                    </td>
+                                    <td><?php echo $row->total_star; ?></td>
+                                    <td><?php echo $row->hotel_name; ?></td>
+                                    <th><a href="{{ route("admin.review.reviewDetail", ["id"=>$row->id]) }}" style="text-decoration: underline;">more detail</a></th>
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>

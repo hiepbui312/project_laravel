@@ -25,7 +25,7 @@
 					<input type="password" name="password" value="<?php echo isset($record->password) ? $record->password: ""; ?>" class="form-control" >
 				</div>
 				<input type="submit" value="Process" class="btn btn-primary">
-				<a class="btn btn-light" href="http://localhost/ttchuyennganh/public/admin/users">Cancel</a>
+				<a class="btn btn-light" href="{{ route("admin.users.index") }}">Cancel</a>
 			</form>
 		</div>
 	</div>

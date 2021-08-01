@@ -49,7 +49,7 @@
                         <div class="header-left">
                             <ul class="list-items">
                                 <li><a href="#"><i class="la la-phone mr-1"></i>(123) 123-456</a></li>
-                                <li><a href="#"><i class="la la-envelope mr-1"></i>trizen@example.com</a></li>
+                                <li><a href="#"><i class="la la-envelope mr-1"></i>nhom16@example.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -57,67 +57,18 @@
                 <div class="col-lg-6">
                     <div class="header-top-content">
                         <div class="header-right d-flex align-items-center justify-content-end">
+                          
+                            @if (session('userName')!= null)
+                            @php
+                                echo "welcome ". session('userName');
+                            @endphp
+                            <a href="{{URL::route('logout')}}" style="margin-left: 10px;">Log out</a>
+                            @else
                             <div class="header-right-action">
-                                <div class="select-contain select--contain w-auto">
-                                    <select class="select-contain-select">
-                                        <option data-content='<span class="flag-icon flag-icon-id mr-1"></span> Bahasa Indonesia'>Bahasa Indonesia</option>
-                                        <option data-content='<span class="flag-icon flag-icon-de mr-1"></span> Deutsch'>Deutsch</option>
-                                        <option data-content='<span class="flag-icon flag-icon-us mr-1"></span> English(US)' selected>English US</option>
-                                        <option data-content='<span class="flag-icon flag-icon-gb-eng mr-1"></span> English(UK)'>English UK</option>
-                                        <option data-content='<span class="flag-icon flag-icon-ro mr-1"></span> Romanian'>Romanian</option>
-                                        <option data-content='<span class="flag-icon flag-icon-es mr-1"></span> Español'>Español</option>
-                                        <option data-content='<span class="flag-icon flag-icon-fr mr-1"></span> Francais'>Francais</option>
-                                        <option data-content='<span class="flag-icon flag-icon-it mr-1"></span> Italiano'>Italiano</option>
-                                        <option data-content='<span class="flag-icon flag-icon-pl mr-1"></span> Polski'>Polski</option>
-                                        <option data-content='<span class="flag-icon flag-icon-pt mr-1"></span> Portuguese'>Portuguese</option>
-                                        <option data-content='<span class="flag-icon flag-icon-tr mr-1"></span> Turkish'>Turkish</option>
-                                        <option data-content='<span class="flag-icon flag-icon-ru mr-1"></span> Russian'>Russian</option>
-                                        <option data-content='<span class="flag-icon flag-icon-jp mr-1"></span> Japanese'>Japanese</option>
-                                        <option data-content='<span class="flag-icon flag-icon-cn mr-1"></span> Mandarin'>Mandarin</option>
-                                        <option data-content='<span class="flag-icon flag-icon-tw mr-1"></span> Mandarin Chinese'>Mandarin Chinese</option>
-                                        <option data-content='<span class="flag-icon flag-icon-kr mr-1"></span> Korean'>Korean</option>
-                                        <option data-content='<span class="flag-icon flag-icon-in mr-1"></span> Hindi'>Hindi</option>
-                                    </select>
-                                </div>
+                                <a href="{{ route("login.register") }}" class="theme-btn theme-btn-small theme-btn-transparent mr-1">Sign Up</a>
+                                <a href="{{ route("login") }}" class="theme-btn theme-btn-small">Login</a>
                             </div>
-                            <div class="header-right-action">
-                                <div class="select-contain select--contain w-auto">
-                                    <select class="select-contain-select">
-                                        <option value="1">AED</option>
-                                        <option value="2">AUD</option>
-                                        <option value="3">BRL</option>
-                                        <option value="4">CAD</option>
-                                        <option value="5">CHF</option>
-                                        <option value="6">CNY</option>
-                                        <option value="7">EUR</option>
-                                        <option value="8">GBP</option>
-                                        <option value="9">HKD</option>
-                                        <option value="10">IDR</option>
-                                        <option value="11">INR</option>
-                                        <option value="12">JPY</option>
-                                        <option value="13">KRW</option>
-                                        <option value="14">MYR</option>
-                                        <option value="15">NZD</option>
-                                        <option value="16">PHP</option>
-                                        <option value="17">PLN</option>
-                                        <option value="18">RUB</option>
-                                        <option value="19">SAR</option>
-                                        <option value="20">SGD</option>
-                                        <option value="21">THB</option>
-                                        <option value="22">TRY</option>
-                                        <option value="23">TWD</option>
-                                        <option value="24" selected>USD</option>
-                                        <option value="25">VND</option>
-                                        <option value="26">MXN</option>
-                                        <option value="27">ARS</option>
-                                        <option value="28">INR</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="header-right-action">
-                                <a href="#" class="theme-btn theme-btn-small theme-btn-transparent mr-1" data-toggle="modal" data-target="#signupPopupForm">Sign Up</a>
-                                 <a href="#" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Login</a>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -128,10 +79,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="menu-wrapper">
+                    <div class="menu-wrapper"> 
                         <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
                         <div class="logo">
-                            <a href="http://localhost/ttchuyennganh2/public"><img src="images/logo.png" alt="logo"></a>
+                            <a href="{{ route("home.index") }}"><img height="50px" src="{{ asset('assets/upload/img/logo2.png') }}" alt="logo"></a>
                             <div class="menu-toggler">
                                 <i class="la la-bars"></i>
                                 <i class="la la-times"></i>
@@ -141,15 +92,15 @@
                             <nav>
                                 <ul>
                                     <li>
-                                        <a href="http://localhost/ttchuyennganh2/public">Home</a>
+                                        <a href="{{ route("home.index") }}">Home</a>
                                     </li>
                                     <li>
-                                        <a href="http://localhost/ttchuyennganh2/public/hotel">Hotel</a>
+                                        <a href="{{ route("hotel.index") }}">Hotel</a>
                                     </li>
                                 </ul>
                             </nav>
-                        </div>
-                       
+                        </div><!-- end main-menu-content -->
+                        
                     </div><!-- end menu-wrapper -->
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
@@ -200,20 +151,24 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
+            <form method="post" action="" enctype="multipart/form-data">
+                    {{ csrf_field()}}
+                    
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-box">
                     <div class="form-title-wrap">
                         <h3 class="title">Your Personal Information</h3>
                     </div><!-- form-title-wrap -->
                     <div class="form-content ">
                         <div class="contact-form-action">
-                            <form method="post">
+                                                             
                                 <div class="row">
                                     <div class="col-lg-6 responsive-column">
                                         <div class="input-box">
                                             <label class="label-text">First Name</label>
                                             <div class="form-group">
                                                 <span class="la la-user form-icon"></span>
-                                                <input class="form-control" type="text" name="text" placeholder="First name">
+                                                <input class="form-control" id ="first_name" type="text" name="text" placeholder="First name" required>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-6 -->
@@ -222,7 +177,7 @@
                                             <label class="label-text">Last Name</label>
                                             <div class="form-group">
                                                 <span class="la la-user form-icon"></span>
-                                                <input class="form-control" type="text" name="text" placeholder="Last name">
+                                                <input class="form-control" id ="last_name" type="text" name="text" placeholder="Last name"required>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-6 -->
@@ -231,7 +186,7 @@
                                             <label class="label-text">Your Email</label>
                                             <div class="form-group">
                                                 <span class="la la-envelope-o form-icon"></span>
-                                                <input class="form-control" type="email" name="email" placeholder="Email address">
+                                                <input class="form-control" id ="gmail" type="email" name="gmail" placeholder="Email address" required>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-6 -->
@@ -240,7 +195,7 @@
                                             <label class="label-text">Phone Number</label>
                                             <div class="form-group">
                                                 <span class="la la-phone form-icon"></span>
-                                                <input class="form-control" type="text" name="text" placeholder="Phone Number">
+                                                <input class="form-control" id ="phone" type="text" name="text" placeholder="Phone Number"required>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-6 -->
@@ -249,7 +204,7 @@
                                             <label class="label-text">Address Line</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marked form-icon"></span>
-                                                <input class="form-control" type="text" name="text" placeholder="Address line">
+                                                <input class="form-control" id ="address" type="text" name="text" placeholder="Address line"required>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-12 -->
@@ -258,7 +213,7 @@
                                             <label class="label-text">Country</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
+                                                    <select class="select-contain-select" id="country"required>
                                                         <option value="select-country">Select country</option>
                                                         <option value="Afghanistan">Afghanistan</option>
                                                         <option value="Åland Islands">Åland Islands</option>
@@ -514,7 +469,7 @@
                                             <label class="label-text">Country Code</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
+                                                    <select class="select-contain-select" id= "country_code"required>
                                                         <option value="country-code">Select country code</option>
                                                         <option value="1">United Kingdom (+44)</option>
                                                         <option value="2">United States (+1)</option>
@@ -535,8 +490,7 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-12 -->
-                                </div>
-                            </form>
+                                </div>                                
                         </div><!-- end contact-form-action -->
                     </div><!-- end form-content -->
                 </div><!-- end form-box -->
@@ -550,21 +504,21 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" id="credit-card-tab" data-toggle="tab" href="#credit-card" role="tab" aria-controls="credit-card" aria-selected="false">
                                         <i class="la la-check icon-element"></i>
-                                        <img src="images/payment-img.png" alt="">
+                                        <img src="{{ asset('assets/frontend/images/payment-img.png ')}}"  alt="">
                                         <span class="d-block pt-2">Payment with credit card</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="paypal-tab" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="true">
                                         <i class="la la-check icon-element"></i>
-                                        <img src="images/paypal.png" alt="">
+                                        <img src="{{ asset('assets/frontend/images/paypal.png')}}" alt="">
                                         <span class="d-block pt-2">Payment with PayPal</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="payoneer-tab" data-toggle="tab" href="#payoneer" role="tab" aria-controls="payoneer" aria-selected="true">
                                         <i class="la la-check icon-element"></i>
-                                        <img src="images/payoneer.png" alt="">
+                                        <img src="{{ asset('assets/frontend/images/payoneer.png')}}" alt="">
                                         <span class="d-block pt-2">Payment with payoneer</span>
                                     </a>
                                 </li>
@@ -572,15 +526,42 @@
                         </div><!-- end section-tab -->
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="credit-card" role="tabpanel" aria-labelledby="credit-card-tab">
-                                <div class="contact-form-action">
-                                    <form method="post">
+                                <div class="contact-form-action">                                   
+                                    
+
+                                <input type="hidden" name="hotel_id" value="<?php echo $data->id; ?>">                            
+                                <input type="hidden" name="first_name" id="first_name1">
+                                <input type="hidden" name="last_name" id="last_name1">
+                                <input type="hidden" name="address" id="address1">
+                                <input type="hidden" name="gmail" id="gmail1">
+                                <input type="hidden" name="phone" id="phone1">                                
+                                <input type="hidden" name="country" id="country1">
+                                <input type="hidden" name="country_code" id="country_code1">
+                                <input type="hidden" name="check_time" value="<?php echo ($daterange); ?>">
+                                <input type="hidden" name="room_name" value="<?php echo ($room->name); ?>">
+                                <input type="hidden" name="rooms" value="<?php echo ($rooms); ?>">
+                                <input type="hidden" name="people" value="<?php echo ($people); ?>">
+                                <input type="hidden" name="price" value="<?php echo ($price1); ?>">
+                                <input type="hidden" name="status" value="0">
+                                <script>
+                                    function asd(){                            
+                                    document.getElementById("first_name1").value = document.getElementById("first_name").value;                                    
+                                    document.getElementById("last_name1").value = document.getElementById("last_name").value;                                    
+                                    document.getElementById("address1").value = document.getElementById("address").value;
+                                    document.getElementById("gmail1").value = document.getElementById("gmail").value;
+                                    document.getElementById("phone1").value = document.getElementById("phone").value;
+                                    
+                                    document.getElementById("country1").value= document.getElementById("country").value;
+                                    document.getElementById("country_code1").value = document.getElementById("country_code").value;                                                            
+                                    }                                                             
+                                </script>
                                         <div class="row">
                                             <div class="col-lg-6 responsive-column">
                                                 <div class="input-box">
                                                     <label class="label-text">Card Holder Name</label>
                                                     <div class="form-group">
                                                         <span class="la la-credit-card form-icon"></span>
-                                                        <input class="form-control" type="text" name="text" placeholder="Card holder name">
+                                                        <input class="form-control" id="card_name" type="text" name="card_name" placeholder="Card holder name" required>
                                                     </div>
                                                 </div>
                                             </div><!-- end col-lg-6 -->
@@ -589,7 +570,7 @@
                                                     <label class="label-text">Card Number</label>
                                                     <div class="form-group">
                                                         <span class="la la-credit-card form-icon"></span>
-                                                        <input class="form-control" type="text" name="text" placeholder="Card number">
+                                                        <input class="form-control" id="card_number" type="text" name="card_number" placeholder="Card number" required>
                                                     </div>
                                                 </div>
                                             </div><!-- end col-lg-6 -->
@@ -600,7 +581,7 @@
                                                             <label class="label-text">Expiry Month</label>
                                                             <div class="form-group">
                                                                 <span class="la la-credit-card form-icon"></span>
-                                                                <input class="form-control" type="text" name="text" placeholder="MM">
+                                                                <input class="form-control" id="exp_month" type="text" name="exp_month" placeholder="MM" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -609,7 +590,7 @@
                                                             <label class="label-text">Expiry Year</label>
                                                             <div class="form-group">
                                                                 <span class="la la-credit-card form-icon"></span>
-                                                                <input class="form-control" type="text" name="text" placeholder="YY">
+                                                                <input class="form-control" id="exp_year" type="text" name="exp_year" placeholder="YY"required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -620,32 +601,34 @@
                                                     <label class="label-text">CVV</label>
                                                     <div class="form-group">
                                                         <span class="la la-pencil form-icon"></span>
-                                                        <input class="form-control" type="text" name="text" placeholder="CVV">
+                                                        <input class="form-control" id="CVV" type="text" name="cvv" placeholder="CVV"required>
                                                     </div>
                                                 </div>
-                                            </div><!-- end col-lg-6 -->
+                                            </div><!-- end col-lg-6 -->                                            
                                             <div class="col-lg-12">
                                                 <div class="input-box">
                                                     <div class="form-group">
                                                         <div class="custom-checkbox">
                                                             <input type="checkbox" id="agreechb">
                                                             <label for="agreechb">By continuing, you agree to the <a href="#">Terms and Conditions</a>.</label>
-                                                        </div>
+                                                        </div>                                                        
+                                                    </div>
+                                                </div>
+                                            </div><!-- end col-lg-12 -->                                    
+                                            <div class="col-lg-12">
+                                                <div class="btn-box">                                                    
+                                                    {{-- <input type="submit" value="Booking" onclick="asd()" > --}}
+                                                    <div class="btn-box">                                                                                                            
+                                                        <button class="theme-btn" type="submit" onclick="asd()">Confirm Booking</button>
                                                     </div>
                                                 </div>
                                             </div><!-- end col-lg-12 -->
-                                            <div class="col-lg-12">
-                                                <div class="btn-box">
-                                                    <button class="theme-btn" type="submit">Confirm Booking</button>
-                                                </div>
-                                            </div><!-- end col-lg-12 -->
-                                        </div>
-                                    </form>
+                                        </div>                                    
                                 </div><!-- end contact-form-action -->
                             </div><!-- end tab-pane-->
                             <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
                                 <div class="contact-form-action">
-                                    <form method="post">
+                                    
                                         <div class="row">
                                             <div class="col-lg-6 responsive-column">
                                                 <div class="input-box">
@@ -671,19 +654,18 @@
                                                 </div>
                                             </div><!-- end col-lg-12 -->
                                         </div>
-                                    </form>
+                                    
                                 </div><!-- end contact-form-action -->
                             </div><!-- end tab-pane-->
                             <div class="tab-pane fade" id="payoneer" role="tabpanel" aria-labelledby="payoneer-tab">
-                                <div class="contact-form-action">
-                                    <form method="post">
+                                <div class="contact-form-action">                                    
                                         <div class="row">
                                             <div class="col-lg-6 responsive-column">
                                                 <div class="input-box">
                                                     <label class="label-text">Email Address</label>
                                                     <div class="form-group">
                                                         <span class="la la-envelope form-icon"></span>
-                                                        <input class="form-control" type="email" name="email" placeholder="Enter email address">
+                                                        <input class="form-control" type="email1" name="email1" placeholder="Enter email address">
                                                     </div>
                                                 </div>
                                             </div><!-- end col-lg-6 -->
@@ -701,13 +683,13 @@
                                                     <button class="theme-btn" type="submit">Login Account</button>
                                                 </div>
                                             </div><!-- end col-lg-12 -->
-                                        </div>
-                                    </form>
+                                        </div>                                    
                                 </div><!-- end contact-form-action -->
                             </div><!-- end tab-pane-->
                         </div><!-- end tab-content -->
                     </div><!-- end form-content -->
                 </div><!-- end form-box -->
+            </form>
             </div><!-- end col-lg-8 -->
             <div class="col-lg-4">
                 <div class="form-box booking-detail-form">
@@ -718,44 +700,49 @@
                         <div class="card-item shadow-none radius-none mb-0">
                             <div class="card-img pb-4">
                                 <a href="hotel-single.html" class="d-block">
-                                    <img src="images/img1.jpg" alt="tour-img">
+                                    <img src="{{ asset('assets/upload/img/'.$data->img) }}" alt="tour-img">
                                 </a>
                             </div>
                             <div class="card-body p-0">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <h3 class="card-title">Hilton Hotel and Resorts</h3>
-                                        <p class="card-meta">Bastille, Paris, France</p>
-                                    </div>
-                                    <div>
-                                        <a href="hotel-single.html" class="btn ml-1"><i class="la la-edit" data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
-                                    </div>
-                                </div>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
+                                        <h3 class="card-title">@php
+                                            echo $data->name;
+                                        @endphp</h3>
+                                        <p class="card-meta">@php
+                                            echo $data->city; echo(', ');echo $data->country;
+                                        @endphp</p>
+                                    </div>                                    
                                 </div>
                                 <div class="section-block"></div>
                                 <ul class="list-items list-items-2 py-2">
-                                    <li><span>Check in:</span>12 Dec 2019 at 11:10 am</li>
-                                    <li><span>Check out:</span>12 Jun 2020 at 2:10 pm</li>
+                                    <li><span>Check in - out:</span><br>@php
+                                        echo $daterange;
+                                    @endphp</li>
+                                    
                                 </ul>
                                 <div class="section-block"></div>
                                 <h3 class="card-title pt-3 pb-2 font-size-15"><a href="hotel-single.html">Order Details</a></h3>
                                 <div class="section-block"></div>
                                 <ul class="list-items list-items-2 py-3">
-                                    <li><span>Room Type:</span>Standard family</li>
-                                    <li><span>Room:</span>2 Rooms</li>
-                                    <li><span>Per Room Price:</span>$121</li>
-                                    <li><span>Adults:</span>4</li>
-                                    <li><span>Stay:</span>4 Nights</li>
+                                    <li><span>Room Type:</span>@php
+                                        echo $room->name;
+                                    @endphp</li>
+                                    <li><span>Room:</span>@php
+                                        echo $rooms;
+                                    @endphp Rooms</li>
+                                    <li><span>Price Per Room:</span>@php
+                                        echo("$");echo $data->price-($data->price*$data->discount)/100;
+                                    @endphp</li>
+                                    <li><span>People:</span>@php
+                                        echo $people;
+                                    @endphp</li>                                    
                                 </ul>
                                 <div class="section-block"></div>
-                                <ul class="list-items list-items-2 pt-3">
-                                    <li><span>Sub Total:</span>$240</li>
-                                    <li><span>Taxes And Fees:</span>$5</li>
-                                    <li><span>Total Price:</span>$245</li>
+                                <ul class="list-items list-items-2 pt-3">                                    
+                                    <li><span>Total Price:</span>$@php
+                                        echo $rooms*($data->price-($data->price*$data->discount)/100);
+                                    @endphp</li>
                                 </ul>
                             </div>
                         </div><!-- end card-item -->
@@ -842,7 +829,7 @@
                                 <label class="label-text text-white">Enter email address</label>
                                 <div class="form-group mb-0">
                                     <span class="la la-envelope form-icon"></span>
-                                    <input class="form-control" type="email" name="email" placeholder="Email address">
+                                    <input class="form-control" type="email1" name="email1" placeholder="Email address">
                                     <button class="theme-btn theme-btn-small submit-btn" type="submit">Subscribe</button>
                                     <span class="font-size-14 pt-1 text-white-50"><i class="la la-lock mr-1"></i>Don't worry your information is safe with us.</span>
                                 </div>
@@ -867,7 +854,7 @@
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
                     <div class="footer-logo padding-bottom-30px">
-                        <a href="index.html" class="foot__logo"><img src="images/logo.png" alt="logo"></a>
+                        <a href="{{ route("home.index") }}"><img height="50px" src="{{ asset('assets/upload/img/logo2.png') }}" ></a>
                     </div><!-- end logo -->
                     <p class="footer__desc">Morbi convallis bibendum urna ut viverra. Maecenas consequat</p>
                     <ul class="list-items pt-3">
@@ -953,7 +940,7 @@
             <div class="col-lg-5">
                 <div class="copy-right-content d-flex align-items-center justify-content-end padding-top-30px">
                     <h3 class="title font-size-15 pr-2">We Accept</h3>
-                    <img src="images/payment-img.png" alt="">
+                    <img src="{{ asset('assets/frontend/images/payment-img.png ')}}" alt="">
                 </div><!-- end copy-right-content -->
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->

@@ -18,28 +18,6 @@
 		@if ( Session::has('error') )  
 			<div class="alert alert-warning">{{ Session::get('error') }}</div>
 		@endif	
-			
-		{{-- <script type="text/javascript">
-				Dropzone.options.dropzone =
-				 {
-					maxFilesize: 12,
-					renameFile: function(file) {
-						var dt = new Date();
-						var time = dt.getTime();
-					   return time+file.name;
-					},
-					acceptedFiles: ".jpeg,.jpg,.png,.gif",
-					timeout: 5000,
-					success: function(file, response) 
-					{
-						console.log(response);
-					},
-					error: function(file, response)
-					{
-					   return false;
-					}
-		};
-		</script> --}}
 		<div class="card">
 		<div class="card-body">
 			<h6 class="card-title">ADD/EDIT HOTEL</h6>
@@ -123,16 +101,10 @@
 						<img src="{{ asset('assets/upload/img/'.$row->name) }}" alt="" style="width: 200px; height: 200px;">
 					<?php endforeach; ?>
 					@endisset
-					{{-- @isset(old('image'))
-					<img src="{{ asset('assets/upload/img/'.$row->name) }}" alt="" style="width: 200px; height: 200px;">
-					@endisset --}}
 				</div>
 				<input type="submit" value="Process" class="btn btn-primary">
-				<a class="btn btn-light" href="http://localhost/ttchuyennganh/public/admin/product/hotel">Cancel</a>
+				<a class="btn btn-light" href="{{ route("admin.hotel.index") }}">Cancel</a>
 			</form>
-			{{-- <form method="post" action="{{url('dropzone-image-upload')}}" enctype="multipart/form-data" 
-						  class="dropzone" id="dropzone">
-					</form>   --}}
 		</div>
 	</div>
 </div>

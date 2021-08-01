@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 //doi tuong lay cac bien theo kieu GET, POST
 use Request;
-use Validator;
 class HotelModel extends Model
 {
     protected $table = "hotel_detail";

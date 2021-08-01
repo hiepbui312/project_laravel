@@ -59,15 +59,15 @@
                     <div class="header-top-content">
                         <div class="header-right d-flex align-items-center justify-content-end">
                           
-                            @if (Auth::user()!= null)
+                            @if (session('userName')!= null)
                             @php
-                                echo "welcome ". Auth::user()->name;
+                                echo "welcome ". session('userName');
                             @endphp
-                            <a href="#" style="margin-left: 10px;">Log out</a>
+                            <a href="{{URL::route('logout')}}" style="margin-left: 10px;">Log out</a>
                             @else
                             <div class="header-right-action">
-                                <a href="http://localhost/ttchuyennganh2/public/register" class="theme-btn theme-btn-small theme-btn-transparent mr-1">Sign Up</a>
-                                <a href="http://localhost/ttchuyennganh2/public/login" class="theme-btn theme-btn-small">Login</a>
+                                <a href="{{ route("login.register") }}" class="theme-btn theme-btn-small theme-btn-transparent mr-1">Sign Up</a>
+                                <a href="{{ route("login") }}" class="theme-btn theme-btn-small">Login</a>
                             </div>
                             @endif
                         </div>
@@ -83,7 +83,7 @@
                     <div class="menu-wrapper"> 
                         <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
                         <div class="logo">
-                            <a href="http://localhost/ttchuyennganh2/public"><img height="50px" src="images/logo2.png" alt="logo"></a>
+                            <a href="{{ route("home.index") }}"><img height="50px" src="{{ asset('assets/upload/img/logo2.png') }}" alt="logo"></a>
                             <div class="menu-toggler">
                                 <i class="la la-bars"></i>
                                 <i class="la la-times"></i>
@@ -93,10 +93,10 @@
                             <nav>
                                 <ul>
                                     <li>
-                                        <a href="http://localhost/ttchuyennganh2/public">Home</a>
+                                        <a href="{{ route("home.index") }}">Home</a>
                                     </li>
                                     <li>
-                                        <a href="http://localhost/ttchuyennganh2/public/hotel">Hotel</a>
+                                        <a href="{{ route("hotel.index") }}">Hotel</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -156,31 +156,25 @@
                     <div class="tab-content search-fields-container" id="myTabContent">
                         <div class="tab-pane fade show active" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
                             <div class="contact-form-action">
-                                <form action="#" class="row align-items-center">
-                                    <div class="col-lg-3 pr-0">
+                                <form action="../../hotel" class="row align-items-center" method="POST">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <div class="col-lg-4 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Destination / Hotel name</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
-                                                <input class="form-control" type="text" placeholder="Enter city or property">
+                                                <input class="form-control" type="text" placeholder="Enter destination" name="Destination">
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
-                                    <div class="col-lg-3 pr-0">
+                                    <div class="col-lg-4 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Check in</label>
+                                            <label class="label-text">Check in - Check out</label>
                                             <div class="form-group">
+                                                {{-- <input type="hidden" id="qwe" name="checkin">
+                                                <input type="hidden" id="qwe2" name="checkout"> --}}
                                                 <span class="la la-calendar form-icon"></span>
-                                                <input class="date-range form-control" type="text" name="daterange-single" readonly>
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-3 -->
-                                    <div class="col-lg-3 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">Check out</label>
-                                            <div class="form-group">
-                                                <span class="la la-calendar form-icon"></span>
-                                                <input class="date-range form-control" type="text" name="daterange-single" readonly>
+                                                <input class="date-range form-control" type="text" name="daterange" id="ewq" readonly>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
@@ -197,20 +191,10 @@
                                                     <div class="dropdown-menu dropdown-menu-wrap">
                                                         <div class="dropdown-item">
                                                             <div class="qty-box d-flex align-items-center justify-content-between">
-                                                                <label>Rooms</label>
-                                                                <div class="qtyBtn d-flex align-items-center">
-                                                                    <div class="qtyDec"><i class="la la-minus"></i></div>
-                                                                    <input type="text" name="room_number" value="0" class="qty-input">
-                                                                    <div class="qtyInc"><i class="la la-plus"></i></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="dropdown-item">
-                                                            <div class="qty-box d-flex align-items-center justify-content-between">
                                                                 <label>Adults</label>
                                                                 <div class="qtyBtn d-flex align-items-center">
                                                                     <div class="qtyDec"><i class="la la-minus"></i></div>
-                                                                    <input type="text" name="adult_number" value="0">
+                                                                    <input type="text" name="qtyInput" value="0">
                                                                     <div class="qtyInc"><i class="la la-plus"></i></div>
                                                                 </div>
                                                             </div>
@@ -220,7 +204,7 @@
                                                                 <label>Children</label>
                                                                 <div class="qtyBtn d-flex align-items-center">
                                                                     <div class="qtyDec"><i class="la la-minus"></i></div>
-                                                                    <input type="text" name="child_number" value="0">
+                                                                    <input type="text" name="qtyInput2" value="0">
                                                                     <div class="qtyInc"><i class="la la-plus"></i></div>
                                                                 </div>
                                                             </div>
@@ -230,10 +214,10 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
+                                    <div class="btn-box pt-2" style="margin-left: 20px;">
+                                        <input type="submit" value="Search Now" class="theme-btn">
+                                    </div>
                                 </form>
-                            </div>
-                            <div class="btn-box">
-                                <a href="hotel-search-result.html" class="theme-btn">Search Now</a>
                             </div>
                         </div><!-- end tab-pane -->
                     </div>
@@ -320,7 +304,7 @@
                         @foreach($popHotel as $item)
                         <div class="card-item mb-0">
                             <div class="card-img">
-                                <a href="hotel-single.html" class="d-block">
+                                <a href="{{ route("hotelDetail.index", ["id"=>$item->id]) }}" class="d-block">
                                     <img src="{{asset('assets/upload/img/'.$item->img)}}" alt="hotel-img">
                                 </a>
                                 <span class="badge">Hot</span>
@@ -329,20 +313,15 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">{{ $item->name}}</a></h3>
+                                <h3 class="card-title"><a href="{{ route("hotelDetail.index", ["id"=>$item->id]) }}">{{ $item->name}}</a></h3>
                                 <p class="card-meta">{{$item->name}}</p>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
                                         <span class="price__from">From</span>
                                         <span class="price__num">${{$item->price}}</span>
                                         <span class="price__text">Per night</span>
                                     </p>
-                                    <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                    <a href="{{ route("hotelDetail.index", ["id"=>$item->id]) }}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                 </div>
                             </div>
                         </div><!-- end card-item -->
@@ -359,6 +338,11 @@
 <!-- ================================
        START TESTIMONIAL AREA
 ================================= -->
+<?php if(!empty($success)): ?>
+<script>
+    alert('thanh toan thanh cong');  
+</script>
+<?php endif; ?>
 <section class="testimonial-area section-padding">
     <div class="container">
         <div class="row">
@@ -541,7 +525,7 @@
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
                     <div class="footer-logo padding-bottom-30px">
-                        <a href="index.html" class="foot__logo"><img height="50px" src="images/logo2.png" alt="logo"></a>
+                        <a href="{{ route("home.index") }}"><img height="50px" src="{{ asset('assets/upload/img/logo2.png') }}" ></a>
                     </div><!-- end logo -->
                     <p class="footer__desc">Morbi convallis bibendum urna ut viverra. Maecenas consequat</p>
                     <ul class="list-items pt-3">
@@ -566,6 +550,19 @@
             </div><!-- end col-lg-3 -->
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
+                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Other Services</h4>
+                    <ul class="list-items list--items">
+                        <li><a href="#">Investor Relations</a></li>
+                        <li><a href="#">Trizen.com Rewards</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">List My Hotel</a></li>
+                        <li><a href="#">All Hotels</a></li>
+                        <li><a href="#">TV Ads</a></li>
+                    </ul>
+                </div><!-- end footer-item -->
+            </div><!-- end col-lg-3 -->
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
                     <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Other Links</h4>
                     <ul class="list-items list--items">
                         <li><a href="#">USA Vacation Packages</a></li>
@@ -575,25 +572,6 @@
                         <li><a href="#">Create an Account</a></li>
                         <li><a href="#">Trizen Reviews</a></li>
                     </ul>
-                </div><!-- end footer-item -->
-            </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 responsive-column">
-                <div class="footer-item">
-                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Subscribe now</h4>
-                    <p class="footer__desc pb-3">Subscribe for latest updates & promotions</p>
-                    <div class="contact-form-action">
-                        <form action="#">
-                            <div class="input-box">
-                                <label class="label-text">Enter email address</label>
-                                <div class="form-group mb-0">
-                                    <span class="la la-envelope form-icon"></span>
-                                    <input class="form-control" type="email" name="email" placeholder="Email address">
-                                    <button class="theme-btn theme-btn-small submit-btn" type="submit">Go</button>
-                                    <span class="font-size-14 pt-1"><i class="la la-lock mr-1"></i>Your information is safe with us.</span>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
         </div><!-- end row -->
@@ -607,7 +585,7 @@
                     </ul>
                 </div>
             </div><!-- end col-lg-8 -->
-             <div class="col-lg-4">
+            <div class="col-lg-4">
                 <div class="footer-social-box text-right">
                     <ul class="social-profile">
                         <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
@@ -625,15 +603,15 @@
             <div class="col-lg-7">
                 <div class="copy-right padding-top-30px">
                     <p class="copy__desc">
-                        &copy; Copyright Trizen. Made with
-                        <span class="la la-heart"></span> by <a href="#">Nhóm 16 - KTPM2 - K13</a>
+                        &copy; Copyright Trizen 2020. Made with
+                        <span class="la la-heart"></span> by <a href="https://themeforest.net/user/techydevs/portfolio">TechyDevs</a>
                     </p>
                 </div><!-- end copy-right -->
             </div><!-- end col-lg-7 -->
             <div class="col-lg-5">
                 <div class="copy-right-content d-flex align-items-center justify-content-end padding-top-30px">
                     <h3 class="title font-size-15 pr-2">We Accept</h3>
-                    <img src="images/payment-img.png" alt="">
+                    <img src="{{ asset('assets/frontend/images/payment-img.png ')}}" alt="">
                 </div><!-- end copy-right-content -->
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->

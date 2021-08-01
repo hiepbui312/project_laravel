@@ -212,7 +212,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="http://localhost/ttchuyennganh2/public/admin/logout" class="nav-link">
+                                <a href="{{ route("admin.login.getLogout") }}" class="nav-link">
                                     <i data-feather="log-out"></i>
                                     <span>Log Out</span>
                                 </a>

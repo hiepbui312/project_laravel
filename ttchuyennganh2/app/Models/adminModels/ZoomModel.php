@@ -62,14 +62,13 @@ class ZoomModel extends Model
     }
     public function deleteItem($id){
         DB::table('room_detail')->delete(["id"=>$id]);
-        DB::table('room_images')->where('zoom_id', '=', $id)->delete();
     }
     public function detail($id){
         $data = DB::table('room_detail')->where('id', $id)->first();
         return $data;
     }
     public function getImage($id){
-        $image = DB::table('room_images')->where('zoom_id', $id)->get();;
+        $image = DB::table('room_detail')->where('id', $id)->get();;
         return $image;
     }
 }

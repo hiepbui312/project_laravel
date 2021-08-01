@@ -86,7 +86,7 @@
                                     
                                 </label>
                             </div>
-                            <a class="btn btn-primary" href="http://localhost/ttchuyennganh2/public/admin/product/hotel">Back</a>
+                            <a class="btn btn-primary" href="{{ route("admin.hotel.index") }}">Back</a>
                         </table>
                     </div>
                 </div>

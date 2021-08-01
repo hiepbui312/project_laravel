@@ -1,9 +1,7 @@
 <!-- load file layout chung -->
 @extends('admin.layout')
 @section('content')
-@php
-    echo Auth::user()->email;
-@endphp
+
 
 <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
     <div>
@@ -27,7 +25,7 @@
         Download Report
       </button>
     </div>
-  </div>
+</div>
 
   <div class="row">
     <div class="col-12 col-xl-12 stretch-card">

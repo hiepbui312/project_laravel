@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-body">
                     <div style=" float: right;">
-                        <a href="http://localhost/ttchuyennganh2/public/admin/product/hotel/addHotel" class="btn btn-primary"><h6>ADD Hotel&nbsp <i class="link-icon" data-feather="user-plus"></i></h6></a>
+                        <a href="{{ route("admin.hotel.create") }}" class="btn btn-primary"><h6>ADD Hotel&nbsp <i class="link-icon" data-feather="user-plus"></i></h6></a>
                     </div>
                     <h6 class="card-title">Danh sách hotels</h6>
                     <div class="table-responsive">
@@ -56,17 +56,10 @@
                                     <th><?php echo $row->hot; ?></th>
                                     <th><?php echo $row->available_from; ?></th>
                                     <th><?php echo $row->available_to; ?></th>
-                                    <th><a href="http://localhost/ttchuyennganh2/public/admin/product/hotel/hotelDetail/<?php echo $row->id; ?>" style="text-decoration: underline;">more detail</a></th>
-                                    {{-- <th> <img src="{{ asset('assets/upload/img/'.$row->image) }}" alt="" style="width: 200px; height: 200px;"></th> --}}
-                                    {{-- <th><?php echo $row->description; ?></th>
-                                    <th><?php echo $row->hotel_type; ?></th>
-                                    <th><?php echo $row->extra_people; ?></th>
-                                    <th><?php echo $row->minium_stay; ?></th>
-                                    <th><?php echo $row->city; ?></th>
-                                    <th><?php echo $row->country; ?></th> --}}
+                                    <th><a href="{{ route("admin.hotel.hotelDetail", ["id"=>$row->id]) }}" style="text-decoration: underline;">more detail</a></th>
                                     <th style="text-align:center;">
-                            <a class="btn btn-success" href="http://localhost/ttchuyennganh2/public/admin/product/hotel/editHotel/<?php echo $row->id; ?>">EDIT</a>&nbsp;
-                            <a class="btn btn-danger" href="http://localhost/ttchuyennganh2/public/admin/product/hotel/deleteHotel/<?php echo $row->id; ?>" onclick="return window.confirm('Ban co thuc su muon xoa');">DELETE</a>
+                            <a class="btn btn-success" href="{{ route("admin.hotel.edit", ["id"=>$row->id]) }}">EDIT</a>&nbsp;
+                            <a class="btn btn-danger" href="{{ route("admin.hotel.delete", ["id"=>$row->id]) }}" onclick="return window.confirm('Ban co thuc su muon xoa');">DELETE</a>
                                     </th>
                                 </tr>
                                 <?php endforeach; ?>

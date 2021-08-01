@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\frontendModels\HomeModel as HomeModel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Session;
 class HomeController extends Controller
 {
     //
@@ -16,10 +18,16 @@ class HomeController extends Controller
 		$this->home = new HomeModel;
 	}
     public function index(){
-    	$data['popHotel'] = DB::table('hotel_detail')->Where('hot',1)->take(8)->get();
+    	$popHotel = DB::table('hotel_detail')->Where('hot',1)->take(8)->get();
     	//$data = $this->hotel->hotHotel();
     	
-    	return view('frontend.index',$data);
+    	return view('frontend.index',['popHotel'=>$popHotel]);
+    }
+    public function success(){
+    	$popHotel = DB::table('hotel_detail')->Where('hot',1)->take(8)->get();
+    	//$data = $this->hotel->hotHotel();
+    	$success =1;
+    	return view('frontend.index',['popHotel'=>$popHotel,'success'=>$success]);
     }
     public function loginPost(Request $request) {
         // Kiểm tra dữ liệu nhập vào

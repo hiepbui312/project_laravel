@@ -1,6 +1,16 @@
 <!-- load file layout chung -->
 @extends('admin.layout')
 @section('content')
+@if ($errors->any())
+	<div class="alert alert-danger alert-dismissible" role="alert">
+		<ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+
+	</div>
+@endif
     <div class="col-md-12">
         <style type="text/css">
             .pagination{padding:0px; margin:0px; float: right;}
@@ -8,34 +18,33 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Chi tiet hotels</h6>
+                    <h6 class="card-title">information website</h6>
                     <div class="table-responsive">
                         <table class="table table-hover">
-                            <div class="form-group">
-                                <label for="exampleInputUsername1">description: @php
-                                    // echo $data->description;
-                                @endphp</label>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputUsername1">phone: @php
-                                    // echo $data->phone;
-                                @endphp</label>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputUsername1">email: @php
-                                    // echo $data->email;
-                                @endphp</label>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputUsername1">address: @php
-                                    // echo $data->address;
-                                @endphp</label>
-                            </div>
-                            <div class="form-group">
-                                image: <br>
-                                {{-- <img src="{{ asset('assets/upload/img/'.$data->logo) }}" alt="" style="width: 200px; height: 200px;"> --}}
-                            </div>
-                            <a class="btn btn-primary" href="http://localhost/ttchuyennganh2/public/admin/contact/editContact">Edit</a>
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>name</th>
+                                    <th>logo</th>
+                                    <th>phone</th> 
+                                    <th>email</th>
+                                    <th style="width: 150px;"></th>  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($infors as $infor): ?>
+                                <tr>
+                                    <th><?php echo $infor->id; ?></th>
+                                    <th><?php echo $infor->name; ?></th>
+                                    <th><img src="{{ asset('assets/upload/img/'.$infor->logo) }}" alt="" style="width: 100px; height: 100px;"></th>
+                                    <th><?php echo $infor->phone; ?></th>
+                                    <th><?php echo $infor->email; ?></th>
+                                    <th style="text-align:center;">
+                                        <a class="btn btn-success" href="{{ route("admin.information.edit") }}">EDIT</a>&nbsp;
+                                    </th>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>

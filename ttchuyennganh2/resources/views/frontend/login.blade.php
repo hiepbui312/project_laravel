@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Password</label>
-                          <input type="password" name="password" required class="form-control" id="exampleInputPassword1" autocomplete="current-password" placeholder="Password">
+                          <input type="password" name="password"  value="{{ old('password') }}" required class="form-control" id="exampleInputPassword1" autocomplete="current-password" placeholder="Password">
                         </div>
                         <input type="hidden" name="remember" value="" id="rememberHiden">
                         @if ($errors->any())
@@ -67,7 +67,7 @@
                         <div class="mt-3">
                           <input type="submit" value="Login" class="btn btn-primary">
                         </div>
-                     
+                        <a href="./register" class="d-block mt-3 text-muted">Bạn chưa là thành viên? <span style="color: blue;">Đăng ký</span></a>
                     </div>
                    
                   </div>

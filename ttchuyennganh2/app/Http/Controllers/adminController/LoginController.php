@@ -17,10 +17,6 @@ class LoginController extends Controller
     {
        return view('admin.login');
     }
-    public function register()
-    {
-       return view('admin.registerView');
-    }
     // public function createPost(){
     // 	//goi ham create ban ghi
     // 	//di chuyen den url: /admin/users/read
@@ -59,7 +55,7 @@ class LoginController extends Controller
                     return redirect('admin/login');
                 }
             }else{
-                if( Auth::attempt(['email' => $email, 'password' =>$password])) {
+                if( Auth::attempt(['email' => $email, 'password' =>$password, 'level' => '2'])) {
                     // Kiểm tra đúng email và mật khẩu sẽ chuyển trang
                     return redirect("admin/home");
                 } else {

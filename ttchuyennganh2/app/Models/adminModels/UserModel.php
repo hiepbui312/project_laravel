@@ -29,7 +29,7 @@ class UserModel extends Model
         $query = DB::table('users')->where('email',$email);
         $check = $query->count();
         if($check == 0){
-            DB::table("users")->insert(["name"=>$name,"email"=>$email,"password"=>$password]);
+            DB::table("users")->insert(["name"=>$name,"email"=>$email,"password"=>$password,"level"=>'2']);
             return true;
         }
         else

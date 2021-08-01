@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 //doi tuong lay cac bien theo kieu GET, POST
 use Request;
-use Validator;
 class HotelModel extends Model
 {
     protected $table = "hotel_detail";
@@ -31,5 +30,24 @@ class HotelModel extends Model
     public function room($id){
         $room = DB::table('room_detail')->where('hotel_id',$id)->get();
         return $room;
+    }
+    public function rate($id){
+        $room = DB::table('rate')->where('hotel_id',$id)->get();
+        return $room;
+    }
+    public function avgRate($id){
+        $avgRate = DB::table('rate')->where('hotel_id',$id)->avg('total_star');
+        return $avgRate;
+    }
+    public function rating($id){
+        $name = Request::get("name");
+        $email = session('userName');
+        $message = Request::get("message");
+        $star = Request::get("star");
+        $checkEmail = DB::table('rate')->where('email',$email)->first();
+        if(!empty($checkEmail)){
+            DB::table('rate')->where('email',$email)->where("hotel_id",$id)->delete();
+        }
+        $rate = DB::table('rate')->insert(["name"=>$name,"email"=>$email,"message"=>$message,"total_star"=>$star,"hotel_id"=>$id]);
     }
 }

@@ -19,42 +19,38 @@
         </style>
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
-                <div class="card-body">
-                    <div style=" float: right;">
-                        <a href="{{ route("admin.zoom.create") }}" class="btn btn-primary"><h6>ADD Zoom&nbsp <i class="link-icon" data-feather="user-plus"></i></h6></a>
-                    </div>
-                    <h6 class="card-title">Danh sách cars</h6>
+                <div class="card-body">                    
+                    <h6 class="card-title">Danh sách đơn hàng</h6>
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
-                                <tr>
-                                    <th>id</th>
-                                    <th>name</th>
-                                    <th>price</th>
-                                    <th>hotel name</th>
-                                    {{-- <th>image</th> --}}
-                                    {{-- <th>description</th>  
-                                    <th>car type</th>
-                                    <th>extra people</th>
-                                    <th>minium stay</th> 
-                                    <th>city</th>
-                                    <th>country</th> --}}
+                                <tr> 
+                                    <th>Name</th>
+                                    <th>Hotel Name</th>
+                                    <th>Price</th>                                     
+                                    <th>Check in-out</th>                                     
+                                    <th>Status</th>                               
                                     <th></th>
                                     <th style="width: 150px;"></th>  
                                 </tr>
                             </thead>
                             <tbody>
+
                                 <?php foreach ($data as $row): ?>
                                 <tr>
-                                    <th><?php echo $row->id; ?></th>
+                                    <th><?php echo $row->first_name; ?> <?php echo $row->last_name; ?></th>
                                     <th><?php echo $row->name; ?></th>
                                     <th><?php echo $row->price; ?></th>
-                                    <th><?php echo $row->hotel_id; ?></th>
-                                    <th><a href="{{ route("admin.zoom.zoomDetail", ["id"=>$row->id]) }}" style="text-decoration: underline;">more detail</a></th>
-                                  
+                                    <th><?php echo $row->check_time; ?></th>                                                                       
+                                    <th><?php if($row->status == 1): ?>
+                                        <span class="btn btn-success">Accepted</span>
+                                     <?php else: ?>
+                                        <span class="btn btn-dark">Pending Request</span>
+                                     <?php endif; ?></th>
+                                    <th><a href="{{ route("admin.payment.paymentDetail", ["id"=>$row->id]) }}" style="text-decoration: underline;">Detail</a></th>
                                     <th style="text-align:center;">
-                            <a class="btn btn-success" href="{{ route("admin.zoom.edit", ["id"=>$row->id]) }}">EDIT</a>&nbsp;
-                            <a class="btn btn-danger" href="{{ route("admin.zoom.delete", ["id"=>$row->id]) }}" onclick="return window.confirm('Ban co thuc su muon xoa');">DELETE</a>
+                            <a class="btn btn-success" href="{{ route("admin.payment.paymentDelivery", ["id"=>$row->id]) }}">Accept</a>&nbsp;
+                            <a class="btn btn-danger" href="{{ route("admin.payment.delete", ["id"=>$row->id]) }}" onclick="return window.confirm('Are you sure ?');">Cancel</a>
                                     </th>
                                 </tr>
                                 <?php endforeach; ?>
