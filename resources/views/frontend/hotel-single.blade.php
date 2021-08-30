@@ -751,15 +751,15 @@
                                                         <div class="rate-option-item">
                                                             <label onclick="star1()">Total rating</label>
                                                             <div class="rate-stars-option">
-                                                                <input type="checkbox" id="lst1">
+                                                                <input type="checkbox" id="star">
                                                                 <label for="lst1"  onclick="star5()"></label>
-                                                                <input type="checkbox" id="lst2">
+                                                                <input type="checkbox" id="star">
                                                                 <label for="lst2" onclick="star4()"></label>
-                                                                <input type="checkbox" id="lst3">
+                                                                <input type="checkbox" id="star">
                                                                 <label for="lst3" onclick="star3()"></label>
-                                                                <input type="checkbox" id="lst4">
+                                                                <input type="checkbox" id="star">
                                                                 <label for="lst4" onclick="star2()"></label>
-                                                                <input type="checkbox" id="lst5">
+                                                                <input type="checkbox" id="star">
                                                                 <label for="lst5" onclick="star1()"></label>
                                                             </div>
                                                         </div>
